@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJAX0.1</title>
+</head>
+
+<body>
+    <script>
+        let ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function(){
+            if (ajax.readyState === 4) {
+                if (ajax.status === 200 || ajax.status === 304) {
+                    document.body.querySelector(".result").textContent = (ajax.response);
+                }
+            }
+        }
+        
+        ajax.open('GET','fichier.txt',true);
+        ajax.send();
+</script>
+<p class="result"></p>
+</body>
+
+</html>
