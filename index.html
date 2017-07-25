@@ -2,27 +2,35 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>AJAX0.1</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	    crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+	    crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+	    crossorigin="anonymous"></script>
+
+	<title>AJAX0.1</title>
 </head>
 
 <body>
-    <script>
-        let ajax = new XMLHttpRequest();
-        ajax.onreadystatechange = function(){
-            if (ajax.readyState === 4) {
-                if (ajax.status === 200 || ajax.status === 304) {
-                    document.body.querySelector(".result").textContent = (ajax.response);
-                }
-            }
-        }
-        
-        ajax.open('GET','fichier.txt',true);
-        ajax.send();
-</script>
-<p class="result"></p>
+	<button class="btn btn-primary" id='but'>Requête</button>
+	<p id="result"></p>
+	<p id="result2"></p>
+	<script src="js/ajax.js"></script>
+	<script>
+		document.body.querySelector('#but').addEventListener("click", function () {
+			doajax({
+				url: 'fichier.txt',
+				method: 'GET',
+				callback:function(reponse){
+					alert(reponse);
+				}
+			});
+		});
+	</script>
 </body>
 
 </html>
